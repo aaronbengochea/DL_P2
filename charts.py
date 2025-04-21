@@ -4,6 +4,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 
+def sort_key(dirname):
+    # e.g. dirname = "r1_a2_qvk"
+    parts = dirname.split('_')
+    # rank = int after 'r'
+    r_val = int(parts[0][1:])
+    # adapter = int after 'a'
+    a_val = int(parts[1][1:]) if len(parts) > 1 and parts[1].startswith('a') else -1
+    # finally fall back to the full string for lexicographic tie‐break
+    return (r_val, a_val, dirname)
+
 
 # Set the base directory containing the experiment subdirectories
 base_dir = "experiments"
@@ -18,9 +28,8 @@ subdirs = [d for d in os.listdir(base_dir)
            and re.match(r"r\d+", d)
            and os.listdir(os.path.join(base_dir, d))]
 
-
-# Sort subdirectories in descending order based on the numeric part (modify reverse=True for descending)
-sorted_subdirs = sorted(subdirs, key=lambda x: int(x[1:2]), reverse=False)
+# Sort the subdirectories using the custom sort key
+sorted_subdirs = sorted(subdirs, key=sort_key, reverse=False)
 
 # Create a PdfPages object to write multiple pages to one PDF file
 with PdfPages(loss_pdf) as pdf:
@@ -89,7 +98,7 @@ with PdfPages(acc_pdf) as pdf:
             # Combine legends from both axes
             lines = [l1, l2, l3]
             labels = [line.get_label() for line in lines]
-            ax.legend(lines, labels, loc='upper right')
+            ax.legend(lines, labels, loc='center right')
             
             ax.set_title(f"{subdir}")
             plt.tight_layout()
