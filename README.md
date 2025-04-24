@@ -5,8 +5,9 @@ This repository contains all the experiments we performed for Project 2, where w
 
 The best-performing setup is located in the `top_performing_experiment/` directory. Inside, you’ll find:
 
-- A Jupyter notebook demonstrating how to recreate the top model  
-- Configuration files and saved checkpoints for reference  
+- A notebook demonstrating how to recreate the top model  
+- Log and processed log history for each step of training
+- Evaluations versus the hidden test set using checkpoints from our most performant steps during training
 
 Feel free to explore each experiment folder for detailed results, hyperparameter sweeps, and analysis notebooks.
 
