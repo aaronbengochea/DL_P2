@@ -1,7 +1,7 @@
 ### Experiments for DL Project 2  
 **Exploring LoRA on AG News Category Classification**
 
-This repository—[agnews-classifier-experiments](https://github.com/aaronbengochea/agnews-classifier-experiments)—contains all the experiments we performed for Project 2, where we systematically evaluate Low-Rank Adaptation (LoRA) configurations on the AG News category classification task. Our goal is to balance classification accuracy, computational efficiency, and generalization with fewer than 1M trainable parameters.
+This repository contains all the experiments we performed for Project 2, where we systematically evaluate Low-Rank Adaptation (LoRA) configurations on the AG News category classification task. Our goal is to balance classification accuracy, computational efficiency, and generalization with fewer than 1M trainable parameters.
 
 The best-performing setup is located in the `top_performing_experiment/` directory. Inside, you’ll find:
 
